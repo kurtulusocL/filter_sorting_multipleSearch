@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Filter_Search.Models.Concrete.Country>
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model)
+{
+    <li>
+        <input type="checkbox" name="country" value="@item.Name" /> @item.Name
+    </li>
+}

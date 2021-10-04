@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Filter_Search.Models.Concrete.Product>
+@{
+    ViewBag.Title = "AdvancedSearchResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="container">
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Product Name
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Stock
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Category
+                    </th>
+                    <th>
+                        Country
+                    </th>
+                    <th>
+                        Created At
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="dataSearch">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Name
+                        </td>
+                        <td>
+                            @item.Status
+                        </td>
+                        <td>
+                            @item.Stock.ToString()
+                        </td>
+                        <td>
+                            @item.Price.ToString()
+                        </td>
+                        <td>
+                            <label class="label label-info">@item.Category.Name</label>
+                        </td>
+                        <td>
+                            <label class="label label-success">@item.Country.Name</label>
+                        </td>
+                        <td>
+                            @item.CreatedDate.ToShortDateString()
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

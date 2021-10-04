@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Filter_Search.Models.Concrete.Product>
+@{
+    ViewBag.Title = "Product Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.ActionLink("Product Name", "Shorting", new { Sorting_Order = ViewBag.SortingName }) <b>|</b>
+                    @Html.ActionLink("NameDesc", "Shorting", new { Sorting_Order = ViewBag.SortingNameDescending })
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    @Html.ActionLink("Stock", "Shorting", new { Sorting_Order = ViewBag.SortingStock }) <b>|</b>
+                    @Html.ActionLink("StockDesc", "Shorting", new { Sorting_Order = ViewBag.SortingStockDescending })
+                </th>
+                <th>
+                    @Html.ActionLink("Price", "Shorting", new { Sorting_Order = ViewBag.SortingPrice }) <b>|</b>
+                    @Html.ActionLink("PriceDesc", "Shorting", new { Sorting_Order = ViewBag.SortingPriceDescending })
+                </th>
+                <th>
+                    Category
+                </th>
+                <th>
+                    Country
+                </th>
+                <th>
+                    Created At
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr class="Search">
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Status
+                    </td>
+                    <td>
+                        @item.Stock
+                    </td>
+                    <td>
+                        @item.Price
+                    </td>
+                    <td>
+                        <label class="label label-info">@item.Category.Name</label>
+                    </td>
+                    <td>
+                        <label class="label label-success">@item.Country.Name</label>
+                    </td>
+                    <td>
+                        @item.CreatedDate.ToShortDateString()
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

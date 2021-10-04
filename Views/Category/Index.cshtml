@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Filter_Search.Models.Concrete.Category>
+
+@{
+    ViewBag.Title = "Category Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    <a href="~/Category/Create" class="btn btn-primary btn-xs">+ Add A New Category</a>
+</p>
+<div class="container">
+    <div class="row">
+        <table class="table table-hover">
+            <tr>
+                <th>
+                   Category Name
+                </th>
+                <th>
+                    Products
+                </th>
+                <th>
+                    Created At
+                </th>
+                <th>
+                    Operations
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Products.Count()
+                    </td>
+                    <td>
+                        @item.CreatedDate.ToShortDateString()
+                    </td>
+                    <td>
+                        <a href="~/Category/Edit/@item.Id" class="btn btn-success btn-xs">Edit</a> |
+                        <a href="~/Category/Delete/@item.Id" class="btn btn-danger btn-xs">Delete</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

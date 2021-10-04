@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Filter_Search.Models.Concrete.Product>
+@{
+    ViewBag.Title = "Search Results";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <tr>
+                <th>
+                    Product Name
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Stock
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Category
+                </th>
+                <th>
+                    Country
+                </th>
+                <th>
+                    Created At
+                </th>
+                <th>
+                    Operations
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Status
+                    </td>
+                    <td>
+                        @item.Stock.ToString()
+                    </td>
+                    <td>
+                        @item.Price.ToString()
+                    </td>
+                    <td>
+                        <label class="label label-info">@item.Category.Name</label>
+                    </td>
+                    <td>
+                        <label class="label label-success">@item.Country.Name</label>
+                    </td>
+                    <td>
+                        @item.CreatedDate.ToShortDateString()
+                    </td>
+                    <td>
+                        <a href="~/Product/Edit/@item.Id" class="btn btn-success btn-xs">Edit</a> |
+                        <a href="~/Product/Delete/@item.Id" class="btn btn-danger btn-xs">Delete</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
